@@ -17,23 +17,25 @@ public class Area {
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter the circle radius: ");
         String userInput = input.nextLine();
-        try {
-            double radius = Double.parseDouble(userInput);
-
-            if (radius < 0) {
+//        try {
+//            double radius = Double.parseDouble(userInput);
+        if (userInput.equals("")) {
+            System.out.println("Invalid entry.");
+        } else {
+            double convertedRadius = Double.parseDouble(userInput);
+            if (convertedRadius < 0) {
                 System.out.println("Please enter a positive circle radius: ");
-                System.exit(0);
+            } else {
+                Double area = Circle.calculateCircleArea(convertedRadius);
+                System.out.println("The area of a circle with radius " + userInput + " is: " + area);
+//        } catch (NumberFormatException nfe) {
+//            System.out.println("Please enter a numeric circle radius.");
+//            System.exit(0);
             }
-
-            Double area = Circle.calculateCircleArea(radius);
-            System.out.println("The area of a circle with radius " + radius + " is: " + area);
-        } catch (NumberFormatException nfe) {
-            System.out.println("Please enter a numeric circle radius.");
-            System.exit(0);
-        }
 
 //    public static double calculateCircleArea(double userRadius){
 //        return Math.PI * userRadius * userRadius;
 //    }
+        }
     }
 }
