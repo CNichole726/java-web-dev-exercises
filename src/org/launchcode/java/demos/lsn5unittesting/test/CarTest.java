@@ -52,12 +52,18 @@ public class CarTest {
     @Test
     public void testGasTankAfterExceedingTankRange(){
         test_car.drive(510);
-        assertTrue(test_car.getGasTankLevel() == 0);
+        assertEquals(0, test_car.getGasTankLevel(), .0001);
     }
     //TODO: can't have more gas than tank size, expect an exception
     @Test(expected = IllegalArgumentException.class)
     public void testGasOverfillException(){
         test_car.addGas(5);
         fail("Shouldn't get here, car cannot have more gas in the tank that the size of the tank");
+    }
+
+    @Test
+    public void testOdometerWorks(){
+        test_car.drive(400);
+        assertTrue(test_car.getOdometer() > 0);
     }
 }
